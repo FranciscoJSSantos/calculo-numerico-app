@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-newton',
@@ -8,7 +9,11 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class NewtonComponent implements OnInit {
   @ViewChild('chuteInicial') chuteInicial?: ElementRef;
 
-  constructor() {}
+  constructor(private _router: Router) {}
+
+  goBack() {
+    this._router.navigate(['/home']);
+  }
 
   ngOnInit(): void {}
 
