@@ -5,19 +5,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
-import { HomeComponentRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
+import { BissecaoRoutingModule } from './bissecao-routing.module';
+import { BissecaoComponent } from './bissecao.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [BissecaoComponent],
   imports: [
     CommonModule,
     RouterModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule,
     MatButtonModule,
+    MatInputModule,
+    MatIconModule,
   ],
-  exports: [HomeComponent, HomeComponentRoutingModule],
+  exports: [BissecaoComponent, BissecaoRoutingModule],
 })
-export class HomeModule {}
+export class BissessaoModule {}

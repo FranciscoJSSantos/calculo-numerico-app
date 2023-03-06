@@ -17,7 +17,6 @@ import { NewtonComponent } from './newton.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatInputModule,
     MatIconModule,
   ],
   exports: [NewtonComponent, NewtonRoutingModule],

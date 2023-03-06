@@ -5,19 +5,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
-import { HomeComponentRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
+import { FalsaPosicaoRoutingModule } from './falsa-posicao-routing.module';
+import { FalsaPosicaoComponent } from './falsa-posicao.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [FalsaPosicaoComponent],
   imports: [
     CommonModule,
     RouterModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule,
     MatButtonModule,
+    MatInputModule,
+    MatIconModule,
   ],
-  exports: [HomeComponent, HomeComponentRoutingModule],
+  exports: [FalsaPosicaoComponent, FalsaPosicaoRoutingModule],
 })
-export class HomeModule {}
+export class FalsaPosicaoModule {}

@@ -2,11 +2,11 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-secante',
-  templateUrl: './secante.component.html',
-  styleUrls: ['./secante.component.scss'],
+  selector: 'app-bissecao',
+  templateUrl: './bissecao.component.html',
+  styleUrls: ['./bissecao.component.scss'],
 })
-export class SecanteComponent implements OnInit {
+export class BissecaoComponent implements OnInit {
   @ViewChild('valorInicial') valorInicial?: ElementRef;
   @ViewChild('valorFinal') valorFinal?: ElementRef;
 

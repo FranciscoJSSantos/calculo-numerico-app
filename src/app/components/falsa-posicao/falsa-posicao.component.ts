@@ -2,11 +2,11 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-secante',
-  templateUrl: './secante.component.html',
-  styleUrls: ['./secante.component.scss'],
+  selector: 'app-bissecao',
+  templateUrl: './falsa-posicao.component.html',
+  styleUrls: ['./falsa-posicao.component.scss'],
 })
-export class SecanteComponent implements OnInit {
+export class FalsaPosicaoComponent implements OnInit {
   @ViewChild('valorInicial') valorInicial?: ElementRef;
   @ViewChild('valorFinal') valorFinal?: ElementRef;
 
@@ -55,35 +55,46 @@ export class SecanteComponent implements OnInit {
 
   items: any[] = [];
 
-  secante(
+  falsaPosicao(
     f: any,
-    x0: any,
-    x1: any,
+    a: any,
+    b: any,
     tol = this.pontoParada,
     max = this.numeroMaxIteracoes
-  ) {
-    let fx0 = f(x0);
-    let fx1 = f(x1);
-    let x = x1;
+  ): any {
+    let fa = f(a);
+    let fb = f(b);
 
+    if (fa * fb > 0) {
+      throw new Error('Não há raiz no intervalo especificado.');
+    }
+
+    let c = a;
     for (var i = 0; i < max; i++) {
-      let dfx = (fx1 - fx0) / (x1 - x0);
-      x = x1 - fx1 / dfx;
+      let fc = f(c);
+      let m = (fb - fa) / (b - a);
+      let d = fa / m;
+      let x = c - d;
 
-      console.log(`iteracao ${0 + 1} | raiz - ${fx1} | metodo - ${x}`);
-      this.items.push({ iteracao: i + 1, raiz: fx1, metodo: x });
+      console.log(`iteracao ${0 + 1} | raiz - ${m} | metodo - ${d}`);
+      this.items.push({ iteracao: i + 1, raiz: d, metodo: x });
 
-      if (Math.abs(x - x1) < tol) {
+      if (Math.abs(d) < tol) {
         console.log(`encontrada na funcao ${x} ✅`);
         this.resultadoEncontrado = x;
         this.iteracaoEncontada = i + 1;
         return x;
       }
 
-      x0 = x1;
-      fx0 = fx1;
-      x1 = x;
-      fx1 = f(x1);
+      let fx = f(x);
+      if (fa * fx > 0) {
+        a = x;
+        fa = fx;
+      } else {
+        b = x;
+        fb = fx;
+      }
+      c = (a * fb - b * fa) / (fb - fa);
     }
   }
 }

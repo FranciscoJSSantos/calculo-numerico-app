@@ -29,6 +29,22 @@ const routes: Routes = [
       ),
     pathMatch: 'full',
   },
+  {
+    path: 'bissecao',
+    loadChildren: () =>
+      import('../app/components/bissecao/bissecao.module').then(
+        (m) => m.BissessaoModule
+      ),
+    pathMatch: 'full',
+  },
+  {
+    path: 'falsa-posicao',
+    loadChildren: () =>
+      import('../app/components/falsa-posicao/falsa-posicao.module').then(
+        (m) => m.FalsaPosicaoModule
+      ),
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

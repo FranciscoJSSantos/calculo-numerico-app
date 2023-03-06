@@ -1,34 +1,104 @@
-<div class="grid gap-4 grid-cols-1">
+<div class="grid gap-4 grid-cols-1 bg-zinc-800">
 
-  <div class="bg-slate-300">
-    <h1 class="text-green-800 font-bold text-2xl my-10 center justify-center flex">
-      Calculo numérico
+  <div class="bg-gray-900">
+    <h1 class="ubuntu_font tracking-wide text-green-400 font-bold text-2xl my-10 center justify-center flex">
+      CÁLCULO NUMÉRICO
     </h1>
   </div>
 
-  <div class="my-5 grid justify-center text-center center">
-    <mat-form-field appearance="outline">
-      <mat-label>Funcao</mat-label>
-      <input #escrevaFuncao matInput placeholder="Função">
-    </mat-form-field>
-    <button (click)="addFuncao();"
-      class="text-center bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded-2xl ">
-      Adicionar Funcao
-    </button>
+  <div class="justify-end flex">
+    <div class="mr-4 mt-4 example-button-container">
+      <button (click)="reBuild()" mat-fab style="background-color: white;">
+        <mat-icon class="text-black">refresh</mat-icon>
+      </button>
+    </div>
   </div>
 
-  <div class="my-5 grid justify-center text-center center">
-    <mat-form-field appearance="outline">
-      <mat-label>Derivada </mat-label>
-      <input #escrevaDerivada matInput placeholder="Derivada">
-    </mat-form-field>
-    <button (click)="addDerivada();"
-      class="text-center bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded-2xl ">
-      Adicionar Derivada
-    </button>
+  <div class="grid justify-center text-center center ">
+    <label class="block text-sm font-medium leading-6 text-white">Função <label *ngIf="funcao != null">✅ -
+        {{funcao}}</label>
+    </label>
+    <div class="relative mt-2 rounded-md shadow-sm">
+      <input type="text" name="price" id="price"
+        class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Função" #escrevaFuncao>
+    </div>
+    <div class="flex justify-around my-5">
+      <button (click)="addFuncao();" type="submit" class=" inline-flex justify-center rounded-md bg-green-600
+      py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-green-500
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+      focus-visible:outline-green-500">Adicionar Função</button>
+      <button *ngIf="funcao != null" (click)="reBuildFuncao()" mat-mini-fab style="background-color: white;">
+        <mat-icon class="text-black">refresh</mat-icon>
+      </button>
+    </div>
+
   </div>
 
-  <h2 class="text-black font-bold text-2xl my-10 center justify-center flex">Métodos</h2>
+  <div class="grid justify-center text-center center ">
+    <label class="block text-sm font-medium leading-6 text-white">Derivada <label *ngIf="derivada != null">✅ -
+        {{derivada}}</label></label>
+    <div class="relative mt-2 rounded-md shadow-sm">
+      <input type="text" name="price" id="price"
+        class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Derivada" #escrevaDerivada>
+    </div>
+    <div class="flex justify-around my-5">
+      <button (click)="addDerivada();" type="submit" class="inline-flex justify-center rounded-md bg-green-600
+      py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-green-500
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+      focus-visible:outline-green-500">Adicionar Derivada</button>
+      <button *ngIf="derivada != null" (click)="reBuildDerivada()" mat-mini-fab style="background-color: white;">
+        <mat-icon class="text-black">refresh</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="grid justify-center text-center center ">
+    <label class="block text-sm font-medium leading-6 text-white">Ponto de Parada <label *ngIf="parada != null">✅ -
+        {{parada}}</label></label>
+    <div class="relative mt-2 rounded-md shadow-sm">
+      <input type="text" name="price" id="price"
+        class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Ponto de Parada" #pontoParada>
+    </div>
+    <div class="flex justify-around my-5">
+      <button (click)="addPontoParada();" type="submit" class=" inline-flex justify-center rounded-md bg-green-600
+      py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-green-500
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+      focus-visible:outline-green-500">Adicionar Ponto de Parada</button>
+      <button *ngIf="parada != null" (click)="reBuildParada()" mat-mini-fab style="background-color: white;">
+        <mat-icon class="text-black">refresh</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="grid justify-center text-center center ">
+    <label class="block text-sm font-medium leading-6 text-white">Adicionar Iteracoes
+      <label *ngIf="itera != null">✅ -
+        {{itera}} </label><label>
+      </label>
+    </label>
+    <div class="relative mt-2 rounded-md shadow-sm">
+      <input type="text" name="price" id="price"
+        class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Numero de Iteracoes" #numeroMaxIteracoes>
+    </div>
+    <div class="flex justify-around my-5">
+
+      <button (click)="addNumeroMaxDeIteracoes();" type="submit" class="  inline-flex justify-center rounded-md bg-green-600
+      py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-green-500
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+      focus-visible:outline-green-500">Adicionar Numero Iteracoes</button>
+
+      <button *ngIf="itera != null" (click)="reBuildItera()" mat-mini-fab style="background-color: white;">
+        <mat-icon class="text-black">refresh</mat-icon>
+      </button>
+
+    </div>
+  </div>
+
+  <h2 class="text-white font-bold text-2xl my-10 center justify-center flex">Métodos</h2>
 
   <div class="flex justify-center">
     <div (click)="goNewton() " class="cursor-pointer flex flex-col rounded-lg bg-black shadow-lg w-64 md:flex-row">
@@ -57,7 +127,7 @@
   </div>
 
   <div class="flex justify-center">
-    <div (click)="goNewton() " class="cursor-pointer flex flex-col rounded-lg bg-black shadow-lg  w-64 md:flex-row">
+    <div (click)="goBissecao() " class="cursor-pointer flex flex-col rounded-lg bg-black shadow-lg  w-64 md:flex-row">
       <div class="flex flex-col justify-start p-6">
         <h5 class="mb-2 text-xl font-medium text-white ">
           Bissecao
@@ -69,8 +139,9 @@
     </div>
   </div>
 
-  <div class="flex justify-center">
-    <div (click)="goNewton() " class="cursor-pointer flex flex-col rounded-lg bg-black shadow-lg  w-64 md:flex-row">
+  <div class="flex justify-center mb-5">
+    <div (click)="goFalsaPosicao() "
+      class="cursor-pointer flex flex-col rounded-lg bg-black shadow-lg  w-64 md:flex-row">
       <div class="flex flex-col justify-start p-6">
         <h5 class="mb-2 text-xl font-medium text-white ">
           Falsa Posicao

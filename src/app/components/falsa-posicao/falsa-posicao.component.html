@@ -5,7 +5,7 @@
     </button>
   </div>
 
-  <p class="block text-lg font-medium leading-6 text-white mt-8">Newton</p>
+  <p class="block text-lg font-medium leading-6 text-white mt-8">Falsa Posicao</p>
   <div class="mr-4 mt-4 example-button-container">
     <button (click)="reBuild()" mat-fab style="background-color: white;">
       <mat-icon class="text-black">refresh</mat-icon>
@@ -16,13 +16,20 @@
 
 <div class="justify-center text-center mt-10">
   <div class="grid justify-center text-center center ">
-    <label class="block text-sm font-medium leading-6 text-white">Chute inicial</label>
+    <label class="block text-sm font-medium leading-6 text-white">Valor inicial</label>
     <div class="relative mt-2 rounded-md shadow-sm">
       <input type="text" name="price" id="price"
         class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-        placeholder="Chute Inicial" #chuteInicial>
+        placeholder="Valor Inicial" #valorInicial>
     </div>
-    <button (click)="newton(f,df,chuteInicial.value )" type="submit" class=" my-5 inline-flex justify-center rounded-md bg-green-600
+
+    <label class="block text-sm font-medium leading-6 text-white mt-5">Valor Final</label>
+    <div class="relative mt-2 rounded-md shadow-sm">
+      <input type="text" name="price" id="price"
+        class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Valor Final" #valorFinal>
+    </div>
+    <button (click)="falsaPosicao(f, valorInicial.value, valorFinal.value)" type="submit" class=" my-5 inline-flex justify-center rounded-md bg-green-600
       py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-green-500
       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
       focus-visible:outline-green-500">Gerar</button>

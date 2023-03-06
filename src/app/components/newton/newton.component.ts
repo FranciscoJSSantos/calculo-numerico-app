@@ -15,6 +15,12 @@ export class NewtonComponent implements OnInit {
     this._router.navigate(['/home']);
   }
 
+  reBuild() {
+    this.items = [];
+    this.resultadoEncontrado = 0;
+    this.iteracaoEncontada = 0;
+  }
+
   ngOnInit(): void {}
 
   f(xValue: any) {
@@ -32,36 +38,40 @@ export class NewtonComponent implements OnInit {
   //3*(x**2) - 9
 
   df(xValue: any) {
-    var valor =
-      sessionStorage.getItem('derivada') === null
-        ? 'x**2'
-        : sessionStorage.getItem('derivada');
-    var derivada =
-      valor?.replaceAll('x', xValue) == null
-        ? 'x**2'
-        : valor?.replaceAll('x', xValue);
+    var valor = sessionStorage.getItem('derivada')!;
+    var derivada = valor?.replaceAll('x', xValue)!;
 
     return eval(derivada);
   }
 
   x0: any = this.chuteInicial?.nativeElement.value;
+  pontoParada: any = eval(sessionStorage.getItem('pontoParada')!);
+  numeroMaxIteracoes: any = eval(sessionStorage.getItem('numeroMaxIteracoes')!);
 
   resultadoEncontrado: any = 0.0;
+  iteracaoEncontada: any = 0;
 
   items: any[] = [];
 
-  newton(f: any, df: any, x0: any, tol = 10 ** -4, max = 100) {
+  newton(
+    f: any,
+    df: any,
+    x0: any,
+    tol = this.pontoParada,
+    max = this.numeroMaxIteracoes
+  ) {
     var x = x0;
 
-    for (var i = 1; i < max; i++) {
+    for (var i = 0; i < max; i++) {
       var fx = f(x);
 
-      console.log(`iteracao ${i} | raiz - ${fx} | metodo - ${x}`);
-      this.items.push({ iteracao: i, raiz: fx, metodo: x });
+      console.log(`iteracao ${0 + 1} | raiz - ${fx} | metodo - ${x}`);
+      this.items.push({ iteracao: i + 1, raiz: fx, metodo: x });
 
       if (Math.abs(fx) < tol) {
         console.log(`encontrada na funcao ${x} ✅`);
         this.resultadoEncontrado = x;
+        this.iteracaoEncontada = i + 1;
         return x;
       }
 
