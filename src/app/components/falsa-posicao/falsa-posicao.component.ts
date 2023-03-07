@@ -64,37 +64,29 @@ export class FalsaPosicaoComponent implements OnInit {
   ): any {
     let fa = f(a);
     let fb = f(b);
-
-    if (fa * fb > 0) {
-      throw new Error('Não há raiz no intervalo especificado.');
+    if (fa * fb >= 0) {
+      throw 'Os extremos devem ter sinais opostos.';
     }
-
-    let c = a;
     for (var i = 0; i < max; i++) {
+      let c = (a * fb - b * fa) / (fb - fa);
       let fc = f(c);
-      let m = (fb - fa) / (b - a);
-      let d = fa / m;
-      let x = c - d;
 
-      console.log(`iteracao ${0 + 1} | raiz - ${m} | metodo - ${d}`);
-      this.items.push({ iteracao: i + 1, raiz: d, metodo: x });
-
-      if (Math.abs(d) < tol) {
-        console.log(`encontrada na funcao ${x} ✅`);
-        this.resultadoEncontrado = x;
+      console.log(`iteracao ${0 + 1} | raiz - ${fc} | metodo - ${c}`);
+      this.items.push({ iteracao: i + 1, raiz: fc, metodo: c });
+      if (Math.abs(fc) < tol) {
+        console.log(`encontrada na funcao ${c} ✅`);
+        this.resultadoEncontrado = c;
         this.iteracaoEncontada = i + 1;
-        return x;
+        return c;
       }
 
-      let fx = f(x);
-      if (fa * fx > 0) {
-        a = x;
-        fa = fx;
+      if (fc * fb < 0) {
+        a = c;
+        fa = fc;
       } else {
-        b = x;
-        fb = fx;
+        b = c;
+        fb = fc;
       }
-      c = (a * fb - b * fa) / (fb - fa);
     }
   }
 }

@@ -55,35 +55,40 @@ export class BissecaoComponent implements OnInit {
 
   items: any[] = [];
 
-  secante(
+  bissecao(
     f: any,
-    x0: any,
-    x1: any,
+    a: any,
+    b: any,
     tol = this.pontoParada,
     max = this.numeroMaxIteracoes
-  ) {
-    let fx0 = f(x0);
-    let fx1 = f(x1);
-    let x = x1;
+  ): any {
+    let fa = f(a);
+    let fb = f(b);
+    if (fa * fb >= 0) {
+      throw new Error('Não há raiz no intervalo fornecido.');
+    }
+    let c = (a + b) / 2;
 
     for (var i = 0; i < max; i++) {
-      let dfx = (fx1 - fx0) / (x1 - x0);
-      x = x1 - fx1 / dfx;
+      let fc = f(c);
 
-      console.log(`iteracao ${0 + 1} | raiz - ${fx1} | metodo - ${x}`);
-      this.items.push({ iteracao: i + 1, raiz: fx1, metodo: x });
-
-      if (Math.abs(x - x1) < tol) {
-        console.log(`encontrada na funcao ${x} ✅`);
-        this.resultadoEncontrado = x;
+      console.log(`iteracao ${0 + 1} | raiz - ${fc} | metodo - ${c}`);
+      this.items.push({ iteracao: i + 1, raiz: fc, metodo: c });
+      if (Math.abs(fc) < tol) {
+        console.log(`encontrada na funcao ${c} ✅`);
+        this.resultadoEncontrado = c;
         this.iteracaoEncontada = i + 1;
-        return x;
+        return c;
       }
 
-      x0 = x1;
-      fx0 = fx1;
-      x1 = x;
-      fx1 = f(x1);
+      if (fa * fc < 0) {
+        b = c;
+        fb = fc;
+      } else {
+        a = c;
+        fa = fc;
+      }
+      c = (a + b) / 2;
     }
   }
 }

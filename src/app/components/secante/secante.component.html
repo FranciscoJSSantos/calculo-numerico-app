@@ -39,14 +39,18 @@
     {{iteracaoEncontada}} </p>
   <p class="font-bold text-green-500 text-xl mb-10" *ngIf="resultadoEncontrado != 0"> {{ resultadoEncontrado }} </p>
 
-  <div *ngIf="items.length != 0" class="justify-center center max-w-sm w-full lg:max-w-full lg:flex">
-    <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-      <div class="mb-8" *ngFor="let item of items">
-        <div class="text-white font-bold text-xl mb-2">ITERAÇÃO | {{ item.iteracao }}</div>
-        <div class="text-white font-bold text-xl mb-2">RAIZ | {{ item.raiz }}</div>
-        <div class="text-white font-bold text-xl mb-2">MÉTODO | {{ item.metodo }}</div>
-        <div class="text-white font-bold text-xl mb-2">-----------------</div>
-      </div>
+  <div *ngFor="let item of items"
+    class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6 my-10">
+
+    <h5 class="mb-5 text-2xl font-bold tracking-tight text-gray-900 ">Iteração {{ item.iteracao }}</h5>
+
+    <div class="flex justify-between text-center center">
+      <p class="mb-3 font-bold text-gray-800">RAIZ</p>
+      <p class="mb-3 font-normal text-gray-700 ">{{ item.raiz }}</p>
+    </div>
+    <div class="flex justify-between text-center center">
+      <p class="mb-3 font-bold text-gray-800 ">MÉTODO</p>
+      <p class="mb-3 font-normal text-gray-700 ">{{ item.metodo }}</p>
     </div>
   </div>
 
