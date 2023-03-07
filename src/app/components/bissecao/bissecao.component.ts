@@ -26,9 +26,9 @@ export class BissecaoComponent implements OnInit {
 
   f(xValue: any) {
     var valor =
-      sessionStorage.getItem('funcao') === null
+      localStorage.getItem('funcao') === null
         ? 'x**2'
-        : sessionStorage.getItem('funcao');
+        : localStorage.getItem('funcao');
     var funcao =
       valor?.replaceAll('x', xValue) == null
         ? 'x**2'
@@ -39,7 +39,7 @@ export class BissecaoComponent implements OnInit {
   //3*(x**2) - 9
 
   df(xValue: any) {
-    var valor = sessionStorage.getItem('derivada')!;
+    var valor = localStorage.getItem('derivada')!;
     var derivada = valor?.replaceAll('x', xValue)!;
 
     return eval(derivada);
@@ -47,8 +47,8 @@ export class BissecaoComponent implements OnInit {
 
   x0: any = this.valorInicial?.nativeElement.value;
   x1: any = this.valorFinal?.nativeElement.value;
-  pontoParada: any = eval(sessionStorage.getItem('pontoParada')!);
-  numeroMaxIteracoes: any = eval(sessionStorage.getItem('numeroMaxIteracoes')!);
+  pontoParada: any = eval(localStorage.getItem('pontoParada')!);
+  numeroMaxIteracoes: any = eval(localStorage.getItem('numeroMaxIteracoes')!);
 
   resultadoEncontrado: any = 0.0;
   iteracaoEncontada: any = 0;

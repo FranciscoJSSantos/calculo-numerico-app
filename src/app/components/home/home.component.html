@@ -82,14 +82,14 @@
     <div class="relative mt-2 rounded-md shadow-sm">
       <input type="text" name="price" id="price"
         class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-        placeholder="Numero de Iteracoes" #numeroMaxIteracoes>
+        placeholder="Número de Iterações" #numeroMaxIteracoes>
     </div>
     <div class="flex justify-around my-5">
 
       <button (click)="addNumeroMaxDeIteracoes();" type="submit" class="  inline-flex justify-center rounded-md bg-green-600
       py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-green-500
       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-      focus-visible:outline-green-500">Adicionar Numero Iteracoes</button>
+      focus-visible:outline-green-500">Adicionar Numero Iterações</button>
 
       <button *ngIf="itera != null" (click)="reBuildItera()" mat-mini-fab style="background-color: white;">
         <mat-icon class="text-black">refresh</mat-icon>
@@ -130,7 +130,7 @@
     <div (click)="goBissecao() " class="cursor-pointer flex flex-col rounded-lg bg-white shadow-lg  w-64 md:flex-row">
       <div class="flex flex-col justify-start p-6">
         <h5 class="mb-2 text-xl font-bold text-black ">
-          Bissecao
+          Bisseção
         </h5>
         <p class="mb-4 text-base text-neutral-500 ">
           Precisa da função

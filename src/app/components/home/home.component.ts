@@ -18,31 +18,31 @@ export class HomeComponent implements OnInit {
   @ViewChild('numeroMaxIteracoes') numeroMaxIteracoes?: ElementRef;
 
   reBuild() {
-    sessionStorage.removeItem('funcao');
-    sessionStorage.removeItem('derivada');
-    sessionStorage.removeItem('pontoParada');
-    sessionStorage.removeItem('numeroMaxIteracoes');
-    this.getSessionStorage();
+    localStorage.removeItem('funcao');
+    localStorage.removeItem('derivada');
+    localStorage.removeItem('pontoParada');
+    localStorage.removeItem('numeroMaxIteracoes');
+    this.getlocalStorage();
   }
 
   reBuildItera() {
-    sessionStorage.removeItem('numeroMaxIteracoes');
-    this.getSessionStorage();
+    localStorage.removeItem('numeroMaxIteracoes');
+    this.getlocalStorage();
   }
 
   reBuildFuncao() {
-    sessionStorage.removeItem('funcao');
-    this.getSessionStorage();
+    localStorage.removeItem('funcao');
+    this.getlocalStorage();
   }
 
   reBuildDerivada() {
-    sessionStorage.removeItem('derivada');
-    this.getSessionStorage();
+    localStorage.removeItem('derivada');
+    this.getlocalStorage();
   }
 
   reBuildParada() {
-    sessionStorage.removeItem('pontoParada');
-    this.getSessionStorage();
+    localStorage.removeItem('pontoParada');
+    this.getlocalStorage();
   }
 
   funcao: any;
@@ -50,15 +50,15 @@ export class HomeComponent implements OnInit {
   parada: any;
   itera: any;
 
-  getSessionStorage() {
-    this.funcao = sessionStorage.getItem('funcao');
-    this.derivada = sessionStorage.getItem('derivada');
-    this.parada = sessionStorage.getItem('pontoParada');
-    this.itera = sessionStorage.getItem('numeroMaxIteracoes');
+  getlocalStorage() {
+    this.funcao = localStorage.getItem('funcao');
+    this.derivada = localStorage.getItem('derivada');
+    this.parada = localStorage.getItem('pontoParada');
+    this.itera = localStorage.getItem('numeroMaxIteracoes');
   }
 
   ngOnInit(): void {
-    this.getSessionStorage();
+    this.getlocalStorage();
   }
 
   goNewton() {
@@ -78,31 +78,25 @@ export class HomeComponent implements OnInit {
   }
 
   addFuncao() {
-    sessionStorage.setItem('funcao', this.escrevaFuncao?.nativeElement.value);
-    this.funcao = sessionStorage.getItem('funcao');
+    localStorage.setItem('funcao', this.escrevaFuncao?.nativeElement.value);
+    this.funcao = localStorage.getItem('funcao');
   }
 
   addDerivada() {
-    sessionStorage.setItem(
-      'derivada',
-      this.escrevaDerivada?.nativeElement.value
-    );
-    this.derivada = sessionStorage.getItem('derivada');
+    localStorage.setItem('derivada', this.escrevaDerivada?.nativeElement.value);
+    this.derivada = localStorage.getItem('derivada');
   }
 
   addPontoParada() {
-    sessionStorage.setItem(
-      'pontoParada',
-      this.pontoParada?.nativeElement.value
-    );
-    this.parada = sessionStorage.getItem('pontoParada');
+    localStorage.setItem('pontoParada', this.pontoParada?.nativeElement.value);
+    this.parada = localStorage.getItem('pontoParada');
   }
 
   addNumeroMaxDeIteracoes() {
-    sessionStorage.setItem(
+    localStorage.setItem(
       'numeroMaxIteracoes',
       this.numeroMaxIteracoes?.nativeElement.value
     );
-    this.itera = sessionStorage.getItem('numeroMaxIteracoes');
+    this.itera = localStorage.getItem('numeroMaxIteracoes');
   }
 }
